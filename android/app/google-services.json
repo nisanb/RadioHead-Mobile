@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1052022706001",
+    "firebase_url": "https://radiohead-6df40.firebaseio.com",
+    "project_id": "radiohead-6df40",
+    "storage_bucket": "radiohead-6df40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052022706001:android:150988a29d0be88c1c4d70",
+        "android_client_info": {
+          "package_name": "com.nisanb.radiohead"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052022706001-vk9od5vg4fvao98g5932dd3r0f3t08el.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtWU_RD6lzsfWjV9n4CDtqCvSGxtCuows"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052022706001-vk9od5vg4fvao98g5932dd3r0f3t08el.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
