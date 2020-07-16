@@ -18,7 +18,8 @@ class StationsController {
 
   Future<List<Station>> loadStations() async {
     List<Station> toReturn = [];
-    List<dynamic> stations = await parseJsonFromAssets("assets/stations.json");
+    List<dynamic> stations =
+        await parseJsonFromAssets("assets/data/stations.json");
     for (var station in stations) {
       // Add a new station object
       toReturn.add(Station(

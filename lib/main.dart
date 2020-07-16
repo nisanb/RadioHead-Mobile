@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:radiohead/controllers/main_controller.dart';
-import 'package:radiohead/screens/bottom_player.dart';
 import 'package:radiohead/screens/home_screen.dart';
 import 'package:radiohead/screens/splash_screen.dart';
 import 'package:radiohead/utils/constants.dart';
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
             HomeScreen.ROUTE: (context) => Scaffold(
                   appBar: _getAppBar(),
                   body: SafeArea(child: HomeScreen()),
-                  bottomNavigationBar: BottomPlayer(),
                 ),
           }),
     );
@@ -42,7 +40,7 @@ Widget _getAppBar() {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Image.asset(
-            "assets/radiohead.png",
+            "assets/images/radiohead.png",
             height: 40.0,
           ),
           Text(
@@ -57,4 +55,16 @@ Widget _getAppBar() {
       elevation: 20.0,
     ),
   );
+}
+
+class BottomPlayerContainer extends StatefulWidget {
+  @override
+  _BottomPlayerContainerState createState() => _BottomPlayerContainerState();
+}
+
+class _BottomPlayerContainerState extends State<BottomPlayerContainer> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }

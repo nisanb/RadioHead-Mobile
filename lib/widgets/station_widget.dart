@@ -15,12 +15,10 @@ class StationWidget extends StatelessWidget {
         print("Want to listen to station ${station.codeURL}");
         Provider.of<MainController>(context, listen: false)
             .radioController
-            .initRadioService(station);
+            .playStation(station);
       },
-      child: Column(
-        children: <Widget>[
-          Image.network(station.imageURL),
-        ],
+      child: Image.network(
+        station.imageURL,
       ),
     );
   }
