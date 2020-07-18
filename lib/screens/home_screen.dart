@@ -4,58 +4,26 @@ import 'package:radiohead/controllers/main_controller.dart';
 import 'package:radiohead/models/station.dart';
 import 'package:radiohead/widgets/station_widget.dart';
 
+import 'bottom_player.dart';
+
 class HomeScreen extends StatelessWidget {
   static String ROUTE = '/main';
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: <Widget>[
-        Flexible(flex: 5, child: StationsView()),
-        Expanded(
-          flex: 1,
-          child: StreamBuilder<Station>(
-              stream: Provider.of<MainController>(context)
-                  .radioController
-                  .getStationStream,
-              builder: (context, snapshot) {
-                return BottomBar(
-                  station: snapshot.data,
-                );
-              }),
+        StationsView(),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Container(
+              height: 100.0,
+              child: BottomBar(),
+            ),
+          ],
         ),
       ],
-    );
-  }
-}
-
-class BottomBar extends StatelessWidget {
-  final Station station;
-  BottomBar({this.station});
-
-  Widget get stationIcon => station != null
-      ? ClipRRect(
-          borderRadius: BorderRadius.circular(50.0),
-          child: Image.network(
-            station.imageURL,
-            scale: 8,
-          ))
-      : Icon(Icons.music_note);
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.only(
-          topRight: Radius.circular(100.0), topLeft: Radius.circular(100.0)),
-      child: Container(
-          color: Colors.black54,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Icon(Icons.play_circle_filled),
-              stationIcon,
-            ],
-          )),
     );
   }
 }
@@ -70,6 +38,7 @@ class _StationsViewState extends State<StationsView> {
 
   void updateStations(List<Station> receivedStations) {
     setState(() {
+      stations = [];
       for (Station station in receivedStations) {
         stations.add(StationWidget(
           station: station,

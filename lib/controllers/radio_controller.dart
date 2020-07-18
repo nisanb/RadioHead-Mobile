@@ -6,20 +6,18 @@ import 'package:radiohead/models/station.dart';
 
 class RadioController {
   var state = FlutterRadioPlayer.flutter_radio_stopped;
-  List<Function> _listeners;
-  Station _currentStation;
   double volume;
   FlutterRadioPlayer _player;
   StreamController<Station> _stream_controller;
   RadioController() {
     _player = FlutterRadioPlayer();
     volume = 0.5;
-    _listeners = List<Function>();
 
     _stream_controller = StreamController<Station>.broadcast();
   }
 
   Stream get getStationStream => _stream_controller.stream;
+  Stream get getStateStream => _player.isPlayingStream;
 
   playOrPause() async {
     try {
@@ -27,21 +25,16 @@ class RadioController {
     } catch (e) {}
   }
 
+  changeVolume(double volume) async {
+    try {
+      await _player.setVolume(volume);
+    } catch (e) {}
+  }
+
   stop() async {
     try {
       await _player.stop();
     } catch (e) {}
-  }
-
-  void registerListener(Function func) {
-    print("registered listener");
-    _listeners.add(func);
-  }
-
-  void notifyListeners() {
-    for (Function listener in _listeners) {
-      listener(_currentStation);
-    }
   }
 
   Future<void> playStation(Station station) async {
